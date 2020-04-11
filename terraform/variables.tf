@@ -1,8 +1,21 @@
-variable "region" {
+variable "aws_region" {
+  description = "aws_region"
   default = "us-east-1"
 }
 variable "environment" {
   default = "Development"
+}
+variable "primary_az" {
+  description = "primary_az"
+  default = "us-east-1a"
+}
+variable "secondary_az" {
+  description = "secondary_az"
+  default = "us-east-1b"
+}
+variable "third_az" {
+  description = "third_az"
+  default = "us-east-1c"
 }
 variable "vpc_cidr" {
   description = "VPC cidr block"

@@ -1,7 +1,10 @@
 
 provider "aws" {
-  region                  = "${var.region}"
-  # shared_credentials_file = "~/.aws/credentials"
-  # profile                 = "development"
-}
+  region = var.aws_region
+  shared_credentials_file = "var.shared_credentials_file"
+  version = "~>2.57"
+  
+}  
+
+
 
