@@ -1,12 +1,12 @@
 
 
 resource "aws_instance" "jenkins-instance" {
-  ami             = "data.aws_ami.ubuntu_ami.id"
+  ami             =  data.aws_ami.ubuntu_ami.id
   instance_type   = "t2.medium"
-  key_name        = "var.keyname"
+  key_name        = var.key_name
   vpc_security_group_ids = [aws_security_group.sg_allow_ssh_jenkins.id]
-  subnet_id          = "aws_subnet.public-subnet-1.id"
-  #user_data = file("install_jenkins.sh")
+  subnet_id          = aws_subnet.public-subnet-1.id
+  user_data = file("install_jenkins.sh")
   associate_public_ip_address = true
   tags = {
     Name = "Jenkins-Instance"
@@ -16,7 +16,7 @@ resource "aws_instance" "jenkins-instance" {
 resource "aws_security_group" "sg_allow_ssh_jenkins" {
   name        = "allow_ssh_jenkins"
   description = "Allow SSH and Jenkins inbound traffic"
-  vpc_id      = "aws_vpc.development-vpc.id"
+  vpc_id      =  aws_vpc.development-vpc.id
 
   ingress {
     from_port   = 22

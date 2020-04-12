@@ -38,12 +38,17 @@ variable "private_subnet_2_cidr" {
 variable "private_subnet_3_cidr" {
   description = "Private Subnet 3 cidr block"
 }
-variable "instance_type" {
 
+# Ubuntu Image
+data "aws_ami" "ubuntu_ami" {
+  most_recent      = true
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+  }
+  owners = ["099720109477"]
 }
-variable "instance_ami" {
 
-}
-variable "keyname" {
-  
+variable "key_name" {
+  description = " key name pair"
 }
