@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+  agent  {
+    image 'maven:3-alpine'
+    args "-v /root/.m2:/root/.m2"
        triggers {
         pollSCM "* * * * *"
-	docker {
-	   image 'maven:3-alpine'
-	   args "-v /root/.m2:/root/.m2"
-	 }
+       }
+    }	
            
       }    
        stages {
