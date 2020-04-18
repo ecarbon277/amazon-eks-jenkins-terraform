@@ -1,15 +1,10 @@
 pipeline {
-  agent  any
-  tools {
-    image 'maven:3-alpine'
-    args "-v /root/.m2:/root/.m2"
-        }
+    agent any
        triggers {
         pollSCM "* * * * *"
        }
-    }	
-           
-       stages('Build Application') { 
+    stages {
+        stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
                 sh 'mvn -B -DskipTests clean package' 
