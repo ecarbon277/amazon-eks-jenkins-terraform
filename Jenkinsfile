@@ -1,11 +1,8 @@
 pipeline {
     agent any
-    tools {
-	   maven 'Maven-3.6.3'
-	}
-       triggers {
-        pollSCM "* * * * *"
-       }
+	docker {
+	    image 'maven:3-alpine'
+	}	
     stages {
         stage('Build Application') { 
             steps {
